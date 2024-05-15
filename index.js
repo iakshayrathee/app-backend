@@ -21,7 +21,7 @@ const connectDB = async () => {
 };
 
 connectDB();
-=======
+
 
 
 async function run() {
