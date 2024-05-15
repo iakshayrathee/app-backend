@@ -1,29 +1,13 @@
 const express = require("express");
-const mongoose = require("mongodb");
 const cors = require("cors");
-// const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-<<<<<<< HEAD
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-const connectDB = async () => {
-  try {
-    const client = await mongoose.connect(
-      "mongodb+srv://akshayrathee:akshayrathee@cluster0.a08waa8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    );
-    console.log(`Connected To MongoDB Database ${conn.connection.host}`);
-  } catch (error) {
-    console.log(`Error in MongoDB ${error}`);
-  }
-};
-
-connectDB();
-=======
 const uri = "mongodb+srv://akshayrathee:akshayrathee@cluster0.a08waa8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1,
                                      useNewUrlParser: true,
@@ -33,16 +17,12 @@ const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1,
   tlsInsecure: false,
   loggerLevel: 'debug'
                                     });
->>>>>>> 8d3ccd6192fedbc72d2cedac9ac8b2578fb8fedb
 
 async function run() {
   try {
-    const postCollection = mongoose.connection
-      .db("database")
-      .collection("posts"); // this collection is for team-ekt
-    const userCollection = mongoose.connection
-      .db("database")
-      .collection("users"); // this collection is for team-srv
+    await client.connect();
+        const postCollection = client.db("database").collection("posts"); // this collection is for team-ekt
+        const userCollection = client.db("database").collection("users"); // this collection is for team-srv
 
     // get
     app.get("/user", async (req, res) => {
