@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongodb");
+const mongoose = require("mongoose");
 const cors = require("cors");
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
