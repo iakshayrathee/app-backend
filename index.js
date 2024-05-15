@@ -10,13 +10,9 @@ app.use(express.json());
 const uri =
   "mongodb+srv://akshayrathee:akshayrathee@cluster0.a08waa8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const client = new MongoClient(uri, {
-  serverApi: ServerApiVersion.v1,
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  sslValidate: true,
-  tlsAllowInvalidCertificates: false,
-  tlsInsecure: false,
-  loggerLevel: "debug",
+  serverApi: ServerApiVersion.v1,
 });
 
 async function run() {
