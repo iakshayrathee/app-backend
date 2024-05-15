@@ -1,28 +1,29 @@
 const express = require("express");
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-
-const uri = "mongodb+srv://akshayrathee:akshayrathee@cluster0.a08waa8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1,
-                                     useNewUrlParser: true,
+const uri =
+  "mongodb+srv://akshayrathee:akshayrathee@cluster0.a08waa8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const client = new MongoClient(uri, {
+  serverApi: ServerApiVersion.v1,
+  useNewUrlParser: true,
   useUnifiedTopology: true,
   sslValidate: true,
   tlsAllowInvalidCertificates: false,
   tlsInsecure: false,
-  loggerLevel: 'debug'
-                                    });
+  loggerLevel: "debug",
+});
 
 async function run() {
   try {
     await client.connect();
-        const postCollection = client.db("database").collection("posts"); // this collection is for team-ekt
-        const userCollection = client.db("database").collection("users"); // this collection is for team-srv
+    const postCollection = client.db("database").collection("posts"); // this collection is for team-ekt
+    const userCollection = client.db("database").collection("users"); // this collection is for team-srv
 
     // get
     app.get("/user", async (req, res) => {
@@ -79,10 +80,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-<<<<<<< HEAD
   console.log(`Twitter clone is listening on port ${port}`);
 });
-=======
-    console.log(`Twitter clone is listening on port ${port}`)
-})
->>>>>>> 8d3ccd6192fedbc72d2cedac9ac8b2578fb8fedb
