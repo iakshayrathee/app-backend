@@ -88,10 +88,8 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-<<<<<<< HEAD
   console.log(`Twitter clone is listening on port ${port}`);
 });
-=======
+
     console.log(`Twitter clone is listening on port ${port}`)
 })
->>>>>>> 8d3ccd6192fedbc72d2cedac9ac8b2578fb8fedb
