@@ -8,6 +8,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+<<<<<<< HEAD
 // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 const connectDB = async () => {
@@ -22,6 +23,17 @@ const connectDB = async () => {
 };
 
 connectDB();
+=======
+const uri = "mongodb+srv://akshayrathee:akshayrathee@cluster0.a08waa8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1,
+                                     useNewUrlParser: true,
+  useUnifiedTopology: true,
+  sslValidate: true,
+  tlsAllowInvalidCertificates: false,
+  tlsInsecure: false,
+  loggerLevel: 'debug'
+                                    });
+>>>>>>> 8d3ccd6192fedbc72d2cedac9ac8b2578fb8fedb
 
 async function run() {
   try {
@@ -87,5 +99,10 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
+<<<<<<< HEAD
   console.log(`Twitter clone is listening on port ${port}`);
 });
+=======
+    console.log(`Twitter clone is listening on port ${port}`)
+})
+>>>>>>> 8d3ccd6192fedbc72d2cedac9ac8b2578fb8fedb
